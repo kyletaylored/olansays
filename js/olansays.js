@@ -2,7 +2,8 @@
 
 function getSayings() {
     var spreadsheetID = "1Nbn2-8niXdCwGj97raH4PHSv4MJqUhNMu4799G9Qy8s";
-    var spreadsheetURL = "https://docs.google.com/spreadsheets/d/e/" + spreadsheetID + "/pub?output=csv";
+    // var spreadsheetURL = "https://docs.google.com/spreadsheets/d/e/" + spreadsheetID + "/pub?output=csv";
+	var spreadsheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT94iG8pDGg7i03J7r0Khr7T8gnuYQoGzDcQouTA04i6HsrXythBWoaafLTC5QMIGgxffPTCB-dUJJT/pub?gid=1207752035&single=true&output=csv";
 
     Papa.parse(spreadsheetURL, {
         download: true,
