@@ -34,7 +34,8 @@ function swapSaying(olanStorage) {
 	} else {
 		var numRes = olanStorage.length;
 		var rand = Math.floor(Math.random() * numRes);
-		var str = olanStorage[rand].olanSays;
+		var olanObj = olanStorage[rand];
+		var str = olanObj["What does Olan say?"];
 
 		// Replace new lines with breaks.
 		str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
