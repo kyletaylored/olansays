@@ -1,21 +1,23 @@
 // OlanSays.js
 
 function getSayings() {
-	var spreadsheetID = "1Nbn2-8niXdCwGj97raH4PHSv4MJqUhNMu4799G9Qy8s";
+    var spreadsheetID = "1Nbn2-8niXdCwGj97raH4PHSv4MJqUhNMu4799G9Qy8s";
+    var spreadsheetURL = "https://docs.google.com/spreadsheets/d/e/" + spreadsheetID + "/pub?output=csv";
 
-	Tabletop.init({
-		key: spreadsheetID,
-		simpleSheet: true,
-		callback: function(data){
-			// Add values to localStorage for future reference, updating incrementally.
-			var olanStorage = localStorage.getItem("olanSayings");
-			olanStorage = JSON.parse(olanStorage);
+    Papa.parse(spreadsheetURL, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            var data = results.data;
+            // Add values to localStorage for future reference, updating incrementally.
+            var olanStorage = localStorage.getItem("olanSayings");
+            olanStorage = JSON.parse(olanStorage) || [];
 
-			if (!olanStorage || data.length > olanStorage.length) {
-				localStorage.setItem("olanSayings", JSON.stringify(data));
-			}
-		}
-	});
+            if (data.length > olanStorage.length) {
+                localStorage.setItem("olanSayings", JSON.stringify(data));
+            }
+        }
+    });
 }
 
 function swapSaying(olanStorage) {
